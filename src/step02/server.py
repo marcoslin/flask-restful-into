@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from flask import Flask, jsonify, request
-from werkzeug.exceptions import NotFound
+
 app = Flask(__name__)
 
 
