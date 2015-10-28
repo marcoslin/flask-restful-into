@@ -1,0 +1,31 @@
+<HTML ng-app="webapp">
+    <HEAD>
+        <TITLE>Welcome to Flask RESTful</TITLE>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </HEAD>
+
+    <BODY ng-controller="mainController">
+        <div class="container">
+            <div class="page-header">
+                <h1>Flask RESTful Intro</h1>
+            </div>
+
+            <label for="collegios">Choose a region: </label>
+            <select
+                id="collegios" ng-model="collegio" ng-change="showDeputatos()"
+                ng-options="row.desc for row in collegios track by row.id">
+            </select>
+
+            <ul class="list-inline">
+                <li ng-repeat="deputato in deputatos">
+                    <img ng-src="{{deputato.img.value}}" title="{{deputato.nome.value}} {{deputato.cognome.value}}">
+                </li>
+            </ul>
+
+        </div>
+    </BODY>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+</HTML>
