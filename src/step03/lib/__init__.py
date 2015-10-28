@@ -5,11 +5,18 @@ from werkzeug.exceptions import InternalServerError
 
 def set_restful_error_handler(app):
     def restful_error_handler(ex):
-        resp = jsonify(error_message=str(ex))
+        message = {
+            "exception": str(ex)
+        }
+        status_code = InternalServerError.code
+
         if isinstance(ex, HTTPException):
-            resp.status_code = ex.code
-        else:
-            resp.status_code = InternalServerError.code
+            status_code = ex.code
+            message["description"] = ex.description
+
+        resp = jsonify(message)
+        resp.status_code = status_code
+
         return resp
 
     for code in default_exceptions.iterkeys():
